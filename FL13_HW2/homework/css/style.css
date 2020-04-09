@@ -1,0 +1,220 @@
+@media print {
+    .tm-sidebar, .tm-team-img, .gallery-container, section:nth-child(6), .carousel-indicators {
+        display: none;
+    }
+    
+    .padding-medium, #tmCarousel, .tm-main-content {
+        padding: 0px;
+    }
+    
+    .tm-content-box {
+        margin-bottom: 0px;
+    }
+    
+    section {
+        text-align: center;
+    }
+    
+    .tm-team-description-container {
+        max-width: none;
+    }
+    
+    ol {
+        margin: auto;
+        list-style-type: none;
+        padding: 0px;
+        max-width: 300px;
+    }
+    
+    li:nth-child(odd){
+        text-align: right;
+    }
+    
+    li:nth-child(even){
+        text-align: left;
+    }
+    
+    h2 {
+        color: lightskyblue;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+    
+    .blocks .tm-section-description:nth-child(3) {
+        letter-spacing: 5px;
+        word-spacing: 10px;
+        font-style: italic;
+    }
+    
+    .tm-section-description {
+        text-indent: 25px;
+        line-height: 30px;
+    }
+}
+
+@media screen {
+    .tm-nav-item-link:hover {
+        color: #fff;
+        background-color: lightskyblue;
+    }
+
+    .tm-banner {
+        background: linear-gradient(360deg, lightskyblue, burlywood);
+    }
+
+    .tm-banner-inner {
+        background-color: white;
+    }
+
+    .tm-banner-text {
+        text-shadow: 0px 3px 0px lightskyblue, 0px 10px 3px lightskyblue;
+        word-spacing: 15px;
+        letter-spacing: 5px;
+        animation-name: banner-move;
+        animation-duration: 4s;
+        animation-iteration-count: 1;
+    }
+
+    @keyframes banner-move {
+        from {
+            transform: rotate(45deg);
+        }
+        to {
+            transform: rotate(0deg);
+        }
+    }
+
+    .flex-2-col {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .flex-2-col .tm-team-description-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .box-bg:hover {
+        background-color: lightskyblue;
+    }
+
+    .box-bg:hover h2 {
+        color: white;
+        font-weight: bold;
+    }
+
+    ol {
+        list-style-type: decimal-leading-zero;
+    }
+
+    .padding-medium li:hover::before {
+        content: ">";
+    }
+
+    .padding-medium li:hover::before, .padding-medium li a:hover {
+        color: red;
+        font-weight: bold;
+    }
+
+    .padding-medium li a.text::after {
+        content: "New";
+        vertical-align: super;
+        color: red;
+        font-weight: bold;
+        font-size: 10px;
+        position: absolute;
+    } 
+
+    .box-work {
+        padding: 10px;
+    }
+
+    .box-work:nth-child(even) {
+        background-color: lightskyblue;
+    }
+
+    .box-work h2 {
+        text-align: left;
+    }
+
+    .box-work:nth-child(odd) h2 {
+        color: black;
+    }
+
+    .box-work:nth-child(even) h2, .box-work:nth-child(even) p {
+        color: white;
+    }
+
+    .box-work p {
+        text-indent: inherit;
+        line-height: inherit;
+    }
+
+    .box-work p::first-letter {
+        font-weight: bold;
+    }
+
+    section h2 {
+        color: lightskyblue;
+        text-align: center;
+    }
+
+    section h2~p {
+        text-indent: 25px;
+        line-height: 30px;
+        font-style: italic;
+    }
+
+    #contact h2 {
+        text-align: right;
+    }
+
+    #contact_name:focus, #contact_email:focus {
+        background-color: lightskyblue;
+    }
+
+    #contact_name, #contact_email, #contact_subject {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color: lightskyblue
+    }
+
+    #contact_message:focus {
+        box-shadow: none;
+    }
+
+    #contact_subject {
+        background: url(../img/email-icon.png) no-repeat scroll;
+        background-position: bottom 7px right 7px;
+        background-size: 24px;
+        border-color: lightskyblue;
+    }
+
+    .submit-btn {
+        color: lightskyblue;
+        border: 3px solid;
+        background-color: white;
+        height: 50px;
+        width: 150px;
+        float: right;
+    }
+
+    .submit-btn:hover {
+        background-color: #20b2aa;
+        border-color: #20b2aa;
+        color: white;
+    }
+
+    .tm-main-nav, .tm-content-header, .tm-main-content section {
+        box-shadow: 0px 0px 10px 0px rgba(61, 55, 61, 0.7);
+    }
+
+    section::before {
+        content: ''; 
+        border: 20px solid transparent; 
+        border-top: 20px solid #87cefa; 
+        border-left: 20px solid #87cefa;
+    }
+}

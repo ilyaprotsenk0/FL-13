@@ -1,54 +1,53 @@
 @media print {
-    .tm-sidebar, .tm-team-img, .gallery-container, section:nth-child(6), .carousel-indicators {
+    .tm-sidebar, .tm-team-img, #about, .gallery-container, #contact, .img-contact-us, .carousel-indicators {
         display: none;
     }
     
-    .padding-medium, #tmCarousel, .tm-main-content {
+    .tm-content-box, .tm-main-content, .padding-medium, #tmCarousel {
+        margin: 0px auto 10px auto;
         padding: 0px;
     }
-    
-    .tm-content-box {
-        margin-bottom: 0px;
+
+    .tm-team-description-container, #tmCarousel {
+        max-width: 600px;
     }
-    
+
+    .tm-banner-text {
+        word-spacing: 10px;
+        letter-spacing: 3px;
+    }
+
     section {
         text-align: center;
     }
-    
-    .tm-team-description-container {
-        max-width: none;
+
+    section h2 {
+        margin: auto;
+        text-transform: uppercase;
+        font-weight: 300;
+        color: lightskyblue;
+    }
+
+    section h2~p {
+        margin: 0px auto 10px auto;
+        text-indent: initial;
+        line-height: 23px;
+        font-style: italic;
     }
     
     ol {
         margin: auto;
+        padding: 0;
         list-style-type: none;
-        padding: 0px;
         max-width: 300px;
     }
     
-    li:nth-child(odd){
+    li:nth-child(even){
         text-align: right;
     }
     
-    li:nth-child(even){
+    li:nth-child(odd){
         text-align: left;
-    }
-    
-    h2 {
-        color: lightskyblue;
-        font-weight: 300;
-        text-transform: uppercase;
-    }
-    
-    .blocks .tm-section-description:nth-child(3) {
-        letter-spacing: 5px;
-        word-spacing: 10px;
-        font-style: italic;
-    }
-    
-    .tm-section-description {
-        text-indent: 25px;
-        line-height: 30px;
     }
 }
 
@@ -70,12 +69,12 @@
         text-shadow: 0px 3px 0px lightskyblue, 0px 10px 3px lightskyblue;
         word-spacing: 15px;
         letter-spacing: 5px;
-        animation-name: banner-move;
+        animation-name: rotate-text;
         animation-duration: 4s;
         animation-iteration-count: 1;
     }
 
-    @keyframes banner-move {
+    @keyframes rotate-text {
         from {
             transform: rotate(45deg);
         }
@@ -104,7 +103,7 @@
         font-weight: bold;
     }
 
-    ol {
+    .padding-medium ol {
         list-style-type: decimal-leading-zero;
     }
 
@@ -130,20 +129,17 @@
         padding: 10px;
     }
 
-    .box-work:nth-child(even) {
-        background-color: lightskyblue;
-    }
-
     .box-work h2 {
         text-align: left;
     }
 
-    .box-work:nth-child(odd) h2 {
-        color: black;
+    .box-work:nth-child(even), .box-work:nth-child(even) h2 {
+        background-color: lightskyblue;
+        color: white;
     }
 
-    .box-work:nth-child(even) h2, .box-work:nth-child(even) p {
-        color: white;
+    .box-work:nth-child(odd) h2 {
+        color: black;
     }
 
     .box-work p {
@@ -170,15 +166,15 @@
         text-align: right;
     }
 
-    #contact_name:focus, #contact_email:focus {
+    #contact_name:focus, #contact_email:focus, #contact_subject:focus {
         background-color: lightskyblue;
     }
 
     #contact_name, #contact_email, #contact_subject {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-color: lightskyblue
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-color: lightskyblue
     }
 
     #contact_message:focus {
@@ -193,17 +189,17 @@
     }
 
     .submit-btn {
+        float: right;
+        height: 50px;
+        width: 150px;
         color: lightskyblue;
         border: 3px solid;
         background-color: white;
-        height: 50px;
-        width: 150px;
-        float: right;
     }
 
     .submit-btn:hover {
-        background-color: #20b2aa;
-        border-color: #20b2aa;
+        background-color: lightseagreen;
+        border-color: lightseagreen;
         color: white;
     }
 

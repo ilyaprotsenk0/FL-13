@@ -1,0 +1,92 @@
+/*
+ * Feel free to change name of colors if you need it
+ * Feel free to add new colors if you need it
+ */
+
+:root {
+  --bg-color--dark: #0b192f;
+  --bg-color--medium: #162b4d;
+  --text--color: #484848;
+  --link: #fff;
+  --link--hover: #b8b8b8;
+}
+
+body {
+  font-family: roboto;
+  width: 1000px;
+  background-color: #0b192f;
+  margin: 0px auto;
+}
+
+.post-1 {
+	background: #F3D250;
+}
+.post-2 {
+	background: #8D8741;
+}
+.post-3 {
+	background: #659DBD;
+}
+.post-4 {
+	background: #DAAD86;
+}
+
+/* Your styles go here */
+
+header {
+  background-color: #162b4d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+header p {
+  margin-left: 50px;
+  font-size: 28px;
+  font-weight: 300;
+}
+
+header span {
+  color: #82184f;
+}
+
+nav {
+  width: 300px;
+  margin-right: 50px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+li {
+  font-size: 14px;
+}
+
+.travel-cards {
+  width: 730px;
+}
+
+.travel-cards article {
+  display: flex;
+}
+
+.travel-cards article img {
+  width: 50%;
+}
+
+.traver-cards-text-wrap {
+  position: relative;
+  padding: 35px 20px;
+}
+
+.travel-cards-date {
+  position: absolute;
+  right: 20px;
+  top: 0px;
+  text-align: center;
+}

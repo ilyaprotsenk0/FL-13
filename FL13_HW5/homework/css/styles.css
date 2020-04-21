@@ -59,6 +59,10 @@ nav {
   width: 300px;
 }
 
+.burger {
+  display: none;
+}
+
 nav ul {
   list-style: none;
   display: flex;
@@ -112,7 +116,7 @@ main {
 
 .travel-cards-text-wrap h2 {
   font-size: 26px;
-  font-weight: 300;
+  font-weight: 200;
 }
 
 .travel-cards-text-info {
@@ -222,4 +226,89 @@ footer {
   font-size: 12px;
   color: #7a828f;
   line-height: 24px;
+}
+
+@media (max-width: 768px) {
+  body {
+    max-width: 768px;
+    margin: 0px 5px;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 20px 0px 0px 0px;
+  }
+
+  .burger {
+    display: block
+  }
+
+  nav {
+    display: none;
+  }
+
+  #post-5 .travel-cards-text-wrap {
+    padding: 60px 20px 0px 20px;
+  }
+
+  .traver-cards {
+    width: 378px;
+    margin-right: 10px;
+  }
+
+  .news-cards {
+    width: 340px;
+  }
+
+  .travel-cards article {
+    flex-direction: column;
+  }
+
+  .travel-cards-text-wrap {
+    padding: 0px 30px;
+  }
+
+  .travel-cards article img {
+    width: 100%;
+  }
+
+  .travel-cards-date {
+    position: static;
+  }
+
+  .travel-cards article:nth-child(even) {
+    flex-direction: column;
+  }
+
+  .travel-cards article:nth-child(even) .travel-cards-text-wrap {
+    padding: 0px 30px;
+    text-align: inherit;
+  }
+
+  .travel-cards article:nth-child(even) .travel-cards-date {
+    position: static;
+  }
+
+  footer {
+    flex-direction: column;
+    justify-content: none;
+    align-items: none;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    max-width: 480px;
+  }
+  
+  main {
+    display: block;
+  }
+  
+  .travel-cards, .news-cards {
+    width: 100%;
+  }
 }

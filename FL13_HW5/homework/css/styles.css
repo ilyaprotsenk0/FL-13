@@ -13,7 +13,7 @@
 
 body {
   font-family: roboto;
-  width: 1000px;
+  max-width: 1000px;
   background-color: #0b192f;
   margin: 0px auto;
 }
@@ -59,14 +59,27 @@ nav {
   width: 300px;
 }
 
-ul {
+nav ul {
   list-style: none;
   display: flex;
   justify-content: space-around;
+  margin: 0px;
 }
 
-li {
+nav li {
   font-size: 14px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  padding: 34px 15px;
+}
+
+nav a:hover {
+  color: #b8b8b8;
+  background-color: #445570;
 }
 
 main {
@@ -91,6 +104,10 @@ main {
   position: relative;
   padding: 0px 80px 0px 25px;
   color: #484848;
+}
+
+.travel-cards article img:hover, .travel-cards-text-wrap:hover {
+  opacity: 0.5;
 }
 
 .travel-cards-text-wrap h2 {
@@ -121,7 +138,6 @@ main {
 .travel-cards-date, .travel-cards-date-monthday {
   font-weight: 300;
 }
-/* For reversed items */
 
 .travel-cards article:nth-child(even) {
   flex-direction: row-reverse;
@@ -138,8 +154,6 @@ main {
   left: 20px;
 }
 
-/* End of reversed */
-
 .news-cards {
   width: 250px;
   box-sizing: border-box;
@@ -147,10 +161,39 @@ main {
 
 .news-cards article {
   background-color: white;
+  margin-bottom: 20px;
+}
+
+.news-cards-text-wrap {
+  padding: 0px 20px 20px 20px;
 }
 
 .news-cards img {
   width: 100%;
+}
+
+.news-cards-text-wrap h3 {
+  font-size: 24px;
+  font-weight: 200;
+}
+
+.news-cards button {
+  background-color: white;
+  border: 1px solid black;
+  width: 105px;
+  height: 25px;
+  font-size: 12px;
+}
+
+.news-cards button:hover {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.news-cards-text-wrap p {
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: 300;
 }
 
 #post-5 {
@@ -160,6 +203,10 @@ main {
   background-repeat: no-repeat;
   background-position-x: center;
   margin-bottom: 20px;
+}
+
+#post-5 .travel-cards-text-wrap:hover {
+  opacity: 1;
 }
 
 #post-5 .travel-cards-text-wrap {
@@ -174,4 +221,5 @@ footer {
   align-items: center;
   font-size: 12px;
   color: #7a828f;
+  line-height: 24px;
 }

@@ -4,21 +4,23 @@ let totalPrize = 0,
 
 while ( currentRound > 0 ) {
 
-    currentRound === 1 ? totalPrize = 0 : '';
-
     if ( startGame ) {
+        
+        currentRound === 1 ? totalPrize = 0 : '';
+
         let prizeMultiplier = currentRound - 1,
             diapasonValue = currentRound * 5,
             possiblePrize = 100 * Math.pow(2, prizeMultiplier),
             randomNumber = Math.round((Math.random() * diapasonValue)),
-            isGuessed = false;
+            isGuessed = false,
+            roundPrize = totalPrize;
         const attempts = 3;
 
         for ( let i = 0; i < attempts; i++, possiblePrize /= 2 ) {
             let userAnswer = prompt(
             'Choose a roulete pocket number from 0 to ' + diapasonValue + 
             '\nAttempts left: ' + (attempts - i) +
-            '\nTotal prize: ' + totalPrize + 
+            '\nTotal prize: ' + roundPrize + 
             '\nPossible prize on current attempt: ' + possiblePrize);
 
             if ( parseInt(userAnswer) === randomNumber ) {

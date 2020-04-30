@@ -1,12 +1,10 @@
 const letterCount = (word, letter) => {
-    let charArr = [...word], 
-        ctr = 0;
+    let ctr = 0;
 
-    charArr.forEach((el) => {
-        el === letter ? ctr++ : '';
+    [...word].forEach((element) => { 
+        element === letter ? ctr++ : '';
     });
-    
     return ctr;
 };
 
-letterCount('Sobaka est myaso', 'a');
+letterCount('Hawaii maui waui', 'i');

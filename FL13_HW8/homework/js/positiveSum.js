@@ -1,7 +1,7 @@
-const positiveSum = (arr) => {
-    let result = arr.filter(el => el > 0)
-                    .reduce((previousValue, currentValue) => previousValue + currentValue);
+const positiveSum = (array) => {
+    let result = array.filter(element => element > 0)
+                      .reduce((previousValue, currentValue) => previousValue + currentValue);
     return result;
 }
 
-positiveSum([1, 3, -5, 4]);
+positiveSum([0, -3, 5, 7]);

@@ -1,3 +1,3 @@
-const stringToNumber = (string) => Number(string);
+const stringToNumber = string => Number(string);
 
 stringToNumber('1248');

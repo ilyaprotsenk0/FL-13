@@ -1,6 +1,3 @@
-const storeNames = (...strings) => {
-    let arr = [...strings];
-    return arr;
-}
+const storeNames = (...strings) => [...strings];
 
 storeNames('Mikah', 'John', 'Artur');

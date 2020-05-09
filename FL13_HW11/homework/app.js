@@ -52,22 +52,30 @@ const data = [
 
 const rootNode = document.getElementById('root');
 
-const openFolder = (item, root) => {
-  const li = document.createElement('li');
-  const span = document.createElement('span');
-  span.innerText = item.title;
-  li.appendChild(span);
-
-  if ( item.folder ) {
-    if ( item.children ) {
-      for (const element of item.children) {
-        openFolder(element, root);
+function openFolder (data, root) {
+  
+  const ul = document.createElement('ul');
+  
+  for (let el of data) {
+    
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    
+    span.innerHTML = el.title;
+    li.append(span);
+    ul.append(li);
+    
+    if ( el.folder ) {
+      if ( el.children ) {
+        openFolder(el.children, li);
+      } else {
+        const empty = document.createElement('span');
+        empty.innerHTML = 'Folder is empty';
+        li.append(empty);
       }
-    } 
+    }
   }
-  root.appendChild(li);
-};
-
-for (const element of data) {
-  openFolder(element, rootNode);
+  root.append(ul);
 }
+
+openFolder(data, rootNode);

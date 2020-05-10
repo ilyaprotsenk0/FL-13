@@ -53,29 +53,53 @@ const data = [
 const rootNode = document.getElementById('root');
 
 function openFolder (data, root) {
-  
   const ul = document.createElement('ul');
   
-  for (let el of data) {
-    
+  for ( let el of data ) {
     const li = document.createElement('li');
-    const span = document.createElement('span');
-    
-    span.innerHTML = el.title;
-    li.append(span);
+    const p = document.createElement('p');
+    const icon = document.createElement('i');
+    icon.classList.add('material-icons');
+    p.innerHTML = el.title;
+    p.prepend(icon);
+    li.append(p);
     ul.append(li);
     
     if ( el.folder ) {
+      p.classList.add('folder');
+      icon.innerHTML = 'folder';
       if ( el.children ) {
         openFolder(el.children, li);
       } else {
-        const empty = document.createElement('span');
-        empty.innerHTML = 'Folder is empty';
+        const empty = document.createElement('em');
+        empty.innerText = 'Folder is empty';
         li.append(empty);
       }
+    } else {
+      p.classList.add('file');
+      icon.innerHTML = 'insert_drive_file';
     }
   }
   root.append(ul);
+  enableInteractivity();
 }
 
 openFolder(data, rootNode);
+
+function enableInteractivity() {
+  let folders = document.getElementsByClassName('folder');
+
+  for ( let folder of folders ) {
+    folder.nextSibling.classList.add('closed');
+    
+    folder.onclick = function () {
+      if ( folder.nextSibling.classList.value === 'closed' ) {
+        folder.nextSibling.classList.remove('closed');
+        folder.nextSibling.classList.remove('add');
+      } else {
+        folder.nextSibling.classList.remove('add');
+        folder.nextSibling.classList.add('closed');
+      }
+    }
+  }
+}

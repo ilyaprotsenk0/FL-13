@@ -1,7 +1,7 @@
 p {
     height: 32px;
     margin: 0;
-    cursor: pointer;
+    user-select: none;
 }
 
 ul {
@@ -10,10 +10,6 @@ ul {
 
 .closed {
     display: none;
-}
-
-.open {
-    display: block;
 }
 
 i {
@@ -33,3 +29,26 @@ i {
     background-color: #e3e3e3;
 }
 
+.context-menu {
+    width: 90px;
+    height: 45px;
+    background-color: #f7f7f7;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    padding: 10px;
+}
+
+#root {
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    padding: 10px 0px;
+}
+
+#rename, #delete {
+    height: 24px;
+}
+#rename:hover, #delete:hover {
+    background-color: #e3e3e3;  
+}

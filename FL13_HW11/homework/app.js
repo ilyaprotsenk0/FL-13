@@ -52,7 +52,19 @@ const data = [
 
 const rootNode = document.getElementById('root');
 
-function openFolder (data, root) {
+let contextMenu = document.createElement('div');
+let delOption = document.createElement('p'),
+    renameOption = document.createElement('p');
+
+delOption.innerText = 'Delete item';
+renameOption.innerText = 'Rename'
+contextMenu.classList.add('context-menu', 'closed');
+delOption.setAttribute('id', 'delete');
+renameOption.setAttribute('id', 'rename');
+contextMenu.append(renameOption, delOption);
+rootNode.append(contextMenu);
+
+function drawTree (data, root) {
   const ul = document.createElement('ul');
   
   for ( let el of data ) {
@@ -60,16 +72,16 @@ function openFolder (data, root) {
     const p = document.createElement('p');
     const icon = document.createElement('i');
     icon.classList.add('material-icons');
-    p.innerHTML = el.title;
+    p.innerText = el.title;
     p.prepend(icon);
     li.append(p);
     ul.append(li);
     
     if ( el.folder ) {
       p.classList.add('folder');
-      icon.innerHTML = 'folder';
+      icon.innerText = 'folder';
       if ( el.children ) {
-        openFolder(el.children, li);
+        drawTree(el.children, li);
       } else {
         const empty = document.createElement('em');
         empty.innerText = 'Folder is empty';
@@ -77,29 +89,49 @@ function openFolder (data, root) {
       }
     } else {
       p.classList.add('file');
-      icon.innerHTML = 'insert_drive_file';
+      icon.innerText = 'insert_drive_file';
     }
   }
   root.append(ul);
-  enableInteractivity();
+  folderOpener();
+  contextMenuOpener();
 }
 
-openFolder(data, rootNode);
+drawTree(data, rootNode);
 
-function enableInteractivity() {
+function folderOpener () {
   let folders = document.getElementsByClassName('folder');
-
+  
   for ( let folder of folders ) {
     folder.nextSibling.classList.add('closed');
-    
+
     folder.onclick = function () {
       if ( folder.nextSibling.classList.value === 'closed' ) {
         folder.nextSibling.classList.remove('closed');
-        folder.nextSibling.classList.remove('add');
+        folder.firstElementChild.textContent = 'folder_open';
       } else {
-        folder.nextSibling.classList.remove('add');
         folder.nextSibling.classList.add('closed');
+        folder.firstElementChild.textContent = 'folder';
       }
     }
+  }
+}
+
+function contextMenuOpener() {
+  let paragraphs = document.getElementsByTagName('p');
+  
+  for (let p of paragraphs) {
+    p.oncontextmenu = function (event) {
+      event.preventDefault();
+      contextMenu.classList.remove('closed');
+      let x = event.pageX;
+      let y = event.pageY;
+      contextMenu.style.left = `${x}px`;
+      contextMenu.style.top = `${y}px`;
+    }
+  }
+
+  document.onclick = function () {
+    contextMenu.classList.add('closed');
   }
 }

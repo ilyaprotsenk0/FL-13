@@ -52,54 +52,48 @@ const data = [
 
 const rootNode = document.getElementById('root');
 
-let contextMenu = document.createElement('div');
-let delOption = document.createElement('p'),
-    renameOption = document.createElement('p');
+function drawTree () {
 
-delOption.innerText = 'Delete item';
-renameOption.innerText = 'Rename'
-contextMenu.classList.add('context-menu', 'closed');
-delOption.setAttribute('id', 'delete');
-renameOption.setAttribute('id', 'rename');
-contextMenu.append(renameOption, delOption);
-rootNode.append(contextMenu);
-
-function drawTree (data, root) {
-  const ul = document.createElement('ul');
-  
-  for ( let el of data ) {
-    const li = document.createElement('li');
-    const p = document.createElement('p');
-    const icon = document.createElement('i');
-    icon.classList.add('material-icons');
-    p.innerText = el.title;
-    p.prepend(icon);
-    li.append(p);
-    ul.append(li);
+  function createTree (data, root) {
+    const ul = document.createElement('ul');
     
-    if ( el.folder ) {
-      p.classList.add('folder');
-      icon.innerText = 'folder';
-      if ( el.children ) {
-        drawTree(el.children, li);
+    for ( let el of data ) {
+      const li = document.createElement('li');
+      const p = document.createElement('p');
+      const icon = document.createElement('i');
+      const wrap = document.createElement('div');
+      const input = document.createElement('input');
+      input.classList.add('closed');
+      wrap.classList.add('wrap');
+      icon.classList.add('material-icons');
+      p.innerText = el.title;
+      wrap.prepend(icon, input, p);
+      li.append(wrap);
+      ul.append(li);
+      
+      if ( el.folder ) {
+        wrap.classList.add('folder');
+        icon.innerText = 'folder';
+        if ( el.children ) {
+          createTree(el.children, li);
+        } else {
+          const empty = document.createElement('em');
+          empty.innerText = 'Folder is empty';
+          li.append(empty);
+        }
       } else {
-        const empty = document.createElement('em');
-        empty.innerText = 'Folder is empty';
-        li.append(empty);
+        wrap.classList.add('file');
+        icon.innerText = 'insert_drive_file';
       }
-    } else {
-      p.classList.add('file');
-      icon.innerText = 'insert_drive_file';
     }
+    root.append(ul);
   }
-  root.append(ul);
-  folderOpener();
-  contextMenuOpener();
+  createTree(data, rootNode);
+  addFoldersAction();
+  addContextMenu();
 }
 
-drawTree(data, rootNode);
-
-function folderOpener () {
+function addFoldersAction () {
   let folders = document.getElementsByClassName('folder');
   
   for ( let folder of folders ) {
@@ -108,30 +102,67 @@ function folderOpener () {
     folder.onclick = function () {
       if ( folder.nextSibling.classList.value === 'closed' ) {
         folder.nextSibling.classList.remove('closed');
-        folder.firstElementChild.textContent = 'folder_open';
+        folder.firstElementChild.innerText = 'folder_open';
       } else {
         folder.nextSibling.classList.add('closed');
-        folder.firstElementChild.textContent = 'folder';
+        folder.firstElementChild.innerText = 'folder';
       }
     }
   }
 }
 
-function contextMenuOpener() {
-  let paragraphs = document.getElementsByTagName('p');
-  
-  for (let p of paragraphs) {
-    p.oncontextmenu = function (event) {
+let contextMenu = document.createElement('div'),
+    delOption = document.createElement('p'),
+    renameOption = document.createElement('p');
+
+delOption.innerText = 'Delete item';
+renameOption.innerText = 'Rename';
+
+contextMenu.classList.add('context-menu', 'closed');
+delOption.setAttribute('id', 'delete');
+renameOption.setAttribute('id', 'rename');
+
+contextMenu.append(renameOption, delOption);
+rootNode.append(contextMenu);
+
+function addContextMenu() {
+  let filesAndFoldersNames = document.getElementsByClassName('wrap');
+
+  for (let name of filesAndFoldersNames) {
+    
+    name.oncontextmenu = function (event) {
       event.preventDefault();
       contextMenu.classList.remove('closed');
       let x = event.pageX;
       let y = event.pageY;
       contextMenu.style.left = `${x}px`;
       contextMenu.style.top = `${y}px`;
+      
+      let input = name.children[1],
+          p = name.lastElementChild;
+
+      contextMenu.onclick = function (event) {
+      
+        if ( event.target.id === 'rename' ) {
+          input.classList.remove('closed');
+          p.classList.add('closed');
+        } else if ( event.target.id === 'delete' ) {
+          name.parentNode.classList.add('closed');
+        }
+      }
+
+      document.onclick = function () {
+        contextMenu.classList.add('closed');
+
+        if ( input.value ) {
+          p.innerText = input.value;
+          input.classList.add('closed');
+          p.classList.remove('closed');
+          input.value = '';
+        }
+      }
     }
   }
-
-  document.onclick = function () {
-    contextMenu.classList.add('closed');
-  }
 }
+
+drawTree();

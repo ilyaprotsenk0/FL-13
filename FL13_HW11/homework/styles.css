@@ -1,5 +1,4 @@
 p {
-    height: 32px;
     margin: 0;
     user-select: none;
 }
@@ -14,7 +13,6 @@ ul {
 
 i {
     color: #edbc0b;
-    vertical-align: text-bottom;
 }
 
 .file i {
@@ -25,7 +23,7 @@ i {
     font-style: italic;
 }
 
-.folder:hover, .file:hover {
+.folder:hover, .file:hover, #rename:hover, #delete:hover {
     background-color: #e3e3e3;
 }
 
@@ -46,9 +44,7 @@ i {
     padding: 10px 0px;
 }
 
-#rename, #delete {
-    height: 24px;
-}
-#rename:hover, #delete:hover {
-    background-color: #e3e3e3;  
+ul div {
+    display: flex;
+    align-items: center;
 }

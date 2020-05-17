@@ -1,0 +1,32 @@
+header, .home, .games-1, .games-2, footer {
+    padding: 0px 150px;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+}
+
+.home button, #footer-search-btn {
+    background-color: #ff7f50;
+    font-weight: 600;
+    color: white;
+}
+
+.home-info-wrap, .home img {
+    width: 50%;
+}
+
+.games-1, .games-2 {
+    padding: 50px 0px;
+}
+
+.games-1 {
+    background-color: #343a40;
+    color: white;
+}
+
+.games-1-info, .games-2-info {
+    width: 500px;
+    margin: 0px auto;
+}

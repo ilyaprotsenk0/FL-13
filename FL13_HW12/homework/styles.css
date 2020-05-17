@@ -1,0 +1,151 @@
+body {
+    background-color: lightgray;
+}
+
+.hidden {
+    display: none;
+}
+
+/* form {
+    width: 300px;
+    height: 200px;
+    border: 3px dotted orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0px 20px;
+    background-color: bisque;
+} */
+
+form {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px rgba(160, 159, 159, 0.705);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#interface button {
+    margin-left: 50px;
+    font-size: 24px;
+    border-radius: 5px;
+    background-color: lightgrey;
+    border: 2px solid black;
+}
+
+#interface {
+    background-color: burlywood;
+    border: 3px solid saddlebrown;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.book-img {
+    border: 1px solid black;
+    width: 200px;
+    height: 225px;
+}
+
+.book-list-item {
+    width: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px rgba(160, 159, 159, 0.705);
+    margin-bottom: 10px;
+}
+
+.book-list-item:hover {
+    background-color: rgb(230, 227, 227);
+}
+
+.work-space {
+    box-sizing: border-box;
+    display: flex;
+}
+
+#book-list {
+    /* border: 1px solid black; */
+    width: 50%;
+}
+
+.actions {
+    /* border: 1px solid orange; */
+    width: 50%;
+}
+
+.preview-img {
+    background-image: url(https://avatars.mds.yandex.net/get-zen_doc/1781308/pub_5d6a7b1…_5d6a7c6…/scale_1200);
+    width: 200px;
+    height: 250px;
+    background-size: cover;
+}
+
+.preview-wrap {
+    width: 300px;
+    margin: 0 auto;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px rgba(160, 159, 159, 0.705);
+    padding: 20px;
+
+    opacity:0; /*Элемент полностью прозрачный (невидимый)*/
+transition: 0.75s; /*Скорость перехода состояния элемента*/
+animation: show 3s 1; /* Указываем название анимации, её время и количество повторов*/
+animation-fill-mode: forwards; /* Чтобы элемент оставался в конечном состоянии анимации */
+animation-delay: 0s; /* Задержка перед началом */
+}
+
+
+@keyframes show{
+    0%{
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
+    }
+
+#form-btn-wrap {
+    display: flex;
+    justify-content: space-around;
+}
+
+#book-form div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-bottom: 1px solid silver;
+    padding-bottom: 10px;
+}
+
+#book-form label {
+    margin-bottom: 5px;
+}
+
+#book-form div #form-btn-wrap input {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#form-btn-wrap input:nth-child(1) {
+    border: 3px solid green;
+    background-color: springgreen;
+}
+
+#form-btn-wrap input:nth-child(2) {
+    border: 3px solid red;
+    background-color: rgba(255, 0, 0, 0.5);
+}

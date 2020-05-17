@@ -6,17 +6,6 @@ body {
     display: none;
 }
 
-/* form {
-    width: 300px;
-    height: 200px;
-    border: 3px dotted orange;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding: 0px 20px;
-    background-color: bisque;
-} */
-
 form {
     width: 300px;
     height: 300px;
@@ -30,14 +19,6 @@ form {
     justify-content: space-evenly;
 }
 
-#interface button {
-    margin-left: 50px;
-    font-size: 24px;
-    border-radius: 5px;
-    background-color: lightgrey;
-    border: 2px solid black;
-}
-
 #interface {
     background-color: burlywood;
     border: 3px solid saddlebrown;
@@ -45,6 +26,14 @@ form {
     display: flex;
     align-items: center;
     padding: 0px 20px;
+}
+
+#interface button {
+    margin-left: 50px;
+    font-size: 24px;
+    border-radius: 5px;
+    background-color: lightgrey;
+    border: 2px solid black;
 }
 
 .book-img {
@@ -73,13 +62,7 @@ form {
     display: flex;
 }
 
-#book-list {
-    /* border: 1px solid black; */
-    width: 50%;
-}
-
-.actions {
-    /* border: 1px solid orange; */
+#book-list, .actions {
     width: 50%;
 }
 
@@ -97,23 +80,22 @@ form {
     border-radius: 10px;
     box-shadow: 0 0 10px 5px rgba(160, 159, 159, 0.705);
     padding: 20px;
-
-    opacity:0; /*Элемент полностью прозрачный (невидимый)*/
-transition: 0.75s; /*Скорость перехода состояния элемента*/
-animation: show 3s 1; /* Указываем название анимации, её время и количество повторов*/
-animation-fill-mode: forwards; /* Чтобы элемент оставался в конечном состоянии анимации */
-animation-delay: 0s; /* Задержка перед началом */
+    opacity: 0;
+    transition: 0.5s;
+    animation: show 3s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 0.25s;
 }
 
 
-@keyframes show{
-    0%{
-    opacity:0;
+@keyframes show {
+    0% {
+        opacity: 0;
     }
     100% {
-    opacity:1;
+        opacity: 1;
     }
-    }
+}
 
 #form-btn-wrap {
     display: flex;
@@ -132,7 +114,13 @@ animation-delay: 0s; /* Задержка перед началом */
     margin-bottom: 5px;
 }
 
-#book-form div #form-btn-wrap input {
+#book-form div:nth-child(5) {
+    margin-top: 20px;
+    flex-direction: row;
+    border-bottom: none;
+}
+
+#book-form div:nth-child(5) input {
     width: 100px;
     height: 40px;
     border-radius: 10px;
@@ -141,11 +129,9 @@ animation-delay: 0s; /* Задержка перед началом */
 }
 
 #form-btn-wrap input:nth-child(1) {
-    border: 3px solid green;
     background-color: springgreen;
 }
 
 #form-btn-wrap input:nth-child(2) {
-    border: 3px solid red;
     background-color: rgba(255, 0, 0, 0.5);
 }

@@ -1,4 +1,5 @@
-let startGame = confirm(`Do you want to play a game?`);
+let startGame = confirm('Do you want to play a game?');
+   
 let totalPrize = 0,
     currentRound = 1;
 
@@ -11,7 +12,7 @@ while ( currentRound > 0 ) {
         let prizeMultiplier = currentRound - 1,
             diapasonValue = currentRound * 5,
             possiblePrize = 100 * Math.pow(2, prizeMultiplier),
-            randomNumber = Math.round((Math.random() * diapasonValue)),
+            randomNumber = Math.round(Math.random() * diapasonValue),
             isGuessed = false,
             roundPrize = totalPrize;
         const attempts = 3;

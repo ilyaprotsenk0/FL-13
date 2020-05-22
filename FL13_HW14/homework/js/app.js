@@ -3,18 +3,10 @@ let Student = function(name, email) {
         studentEmail = email;
     let homeworkResults = [];
     return {
-        getName: () => {
-            return studentName;
-        },
-        getEmail: () => {
-            return studentEmail;
-        },
-        addHomeworkResult: (topic, success) => {
-            return homeworkResults.push({topic, success});
-        },
-        getHomeworkResults: () => {
-            return homeworkResults;
-        }
+        getName: () => studentName,
+        getEmail: () => studentEmail,
+        addHomeworkResult: (topic, success) => homeworkResults.push({topic, success}),
+        getHomeworkResults: () => homeworkResults
     };
 }
 
@@ -30,9 +22,8 @@ let FrontEndLab = function (studentsArr, failedHomeworksLimit) {
         addHomeworkResults: homework => {
             for (let student of studentsList) {
                 for (let result of homework.results) {
-                    if (student.getEmail() === result.email) {
-                        student.addHomeworkResult(homework.topic, result.success);
-                    }
+                    student.getEmail() === result.email ? 
+                    student.addHomeworkResult(homework.topic, result.success) : '';
                 }
             }
         },
@@ -40,13 +31,10 @@ let FrontEndLab = function (studentsArr, failedHomeworksLimit) {
             for (let student of studentsList) {
                 let failedHomeworksCtr = 0;
                     for (let homework of student.getHomeworkResults()) {
-                        if (!homework.success) {
-                            failedHomeworksCtr++;
-                        }
+                        !homework.success ? failedHomeworksCtr++ : '';
                     }
-                if (failedHomeworksCtr < failedHomeworksLimit) {
-                    console.log(student.getName(), student.getEmail());
-                }
+                failedHomeworksCtr <= failedHomeworksLimit ? 
+                console.log(student.getName(), student.getEmail()) : '';
             }
         }
     };

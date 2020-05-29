@@ -112,7 +112,7 @@ const editUser = (id) => {
     xhr.onload = () => {
         xhr.status === PUT_STATUS ? getUsers() : console.error(xhr.response);
     };
-    xhr.send(JSON.stringify(body)); 
+    xhr.send(JSON.stringify(body));
 };
 
 const deleteUser = (id) => {

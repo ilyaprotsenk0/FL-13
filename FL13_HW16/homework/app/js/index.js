@@ -1,39 +1,38 @@
 const baseUrl = 'http://localhost:3000';
-const requestURL = 'http://localhost:3000/users/';
 const appContainer = document.getElementById('app-container');
 const usersList = document.getElementById('users-list');
-const GET_CODE = 200,
-      POST_CODE = 201,
-      PUT_CODE = 204,
-      DELETE_CODE = 204;
+const GET_STATUS = 200,
+      POST_STATUS = 201,
+      PUT_STATUS = 204,
+      DELETE_STATUS = 204;
 
-const cleanList = () => {
-    for (let i = 0; usersList.children.length; i++) {
+const cleanUsersList = () => {
+    while (usersList.children.length) {
         usersList.removeChild(usersList.children[0]);
     }
 }
 
 const enableEditDelButtons = () => {
-    let updateBtns = document.getElementsByClassName('update');
-    for (let updateBtn of updateBtns) {
+    const updateBtns = document.getElementsByClassName('update');
+    for (const updateBtn of updateBtns) {
         updateBtn.addEventListener('click', () => {
-            let currentUserId = updateBtn.parentNode.id;
+            const currentUserId = updateBtn.parentNode.id;
             editUser(currentUserId);
         });
     }
 
-    let deleteBtns = document.getElementsByClassName('delete');
-    for (let deleteBtn of deleteBtns) {
+    const deleteBtns = document.getElementsByClassName('delete');
+    for (const deleteBtn of deleteBtns) {
         deleteBtn.addEventListener('click', () => {
-            let currentUserId = deleteBtn.parentNode.id;
+            const currentUserId = deleteBtn.parentNode.id;
             deleteUser(currentUserId);
         });
     }
 };
 
-const drawUserList = (obj) => {
-    cleanList();
-    for ( let person of obj ) {
+const drawUsersList = (obj) => {
+    cleanUsersList();
+    for (const person of obj) {
         let personInfoWrap = document.createElement('div'),
             personId = document.createElement('span'),
             inputPersonName = document.createElement('input'),
@@ -59,7 +58,7 @@ const drawUserList = (obj) => {
 
 const getUsers = () => {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', requestURL);
+    xhr.open('GET', `${baseUrl}/users/`);
     xhr.responseType = 'json';
 
     xhr.onprogress = () => {
@@ -67,7 +66,7 @@ const getUsers = () => {
     }
 
     xhr.onload = () => {
-        xhr.status === GET_CODE ? drawUserList(xhr.response) : console.error(xhr.response);
+        xhr.status === GET_STATUS ? drawUsersList(xhr.response) : console.error(xhr.response);
         document.getElementById('loading').style.display = 'none';
     };
     xhr.send();
@@ -82,15 +81,16 @@ const addUser = () => {
     }
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', requestURL);
+    xhr.open('POST', `${baseUrl}/users/`);
     xhr.responseType = 'json';
     xhr.setRequestHeader('Content-type', 'application/json');
     
     xhr.onprogress = () => {
         document.getElementById('addBtn').disabled = true;
     }
+    
     xhr.onload = () => {
-        xhr.status === POST_CODE ? getUsers() : console.error(xhr.response);
+        xhr.status === POST_STATUS ? getUsers() : console.error(xhr.response);
         document.getElementById('addBtn').disabled = false;
     };
     xhr.send(JSON.stringify(body));
@@ -105,23 +105,23 @@ const editUser = (id) => {
     }
 
     const xhr = new XMLHttpRequest();
-    xhr.open('PUT', `${requestURL}${id}/`);
+    xhr.open('PUT', `${baseUrl}/users/${id}/`);
     xhr.responseType = 'json';
     xhr.setRequestHeader('Content-type', 'application/json');
 
     xhr.onload = () => {
-        xhr.status === PUT_CODE ? getUsers() : console.error(xhr.response);
+        xhr.status === PUT_STATUS ? getUsers() : console.error(xhr.response);
     };
     xhr.send(JSON.stringify(body));
 };
 
 const deleteUser = (id) => {
     const xhr = new XMLHttpRequest();
-    xhr.open('DELETE', `${requestURL}${id}/`);
+    xhr.open('DELETE', `${baseUrl}/users/${id}/`);
     xhr.setRequestHeader('Authorization' , 'admin');
     
     xhr.onload = () => {
-        xhr.status === DELETE_CODE ? getUsers() : console.error(xhr.response);
+        xhr.status === DELETE_STATUS ? getUsers() : console.error(xhr.response);
     };
     xhr.send(JSON.stringify(id));
 };

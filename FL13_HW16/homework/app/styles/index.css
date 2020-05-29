@@ -1,0 +1,26 @@
+body {
+    background-color: lightblue;
+}
+
+#loading {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loading p {
+    font-size: 72px;
+    font-weight: bold;
+}
+
+#users-list span {
+    width: 50px;
+    display: inline-block;
+    margin-right: 10px;
+}

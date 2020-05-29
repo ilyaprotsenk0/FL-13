@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./styles/index.css">
+  <title>UserList</title>
+</head>
+<body>
+  <div id="app-container">
+    <h1>Manage User App</h1>
+    <form name="addNewUser">
+      <input type="text" name="userName" placeholder="Name">
+      <input type="text" name="fullUserName" placeholder="Full Name">
+      <input type="button" id="addBtn" value="Add New User">
+    </form>
+    <hr>
+    <div id="users-list"></div>
+  </div>
+  <div id="loading">
+    <p>Content is loading now...</p>
+  </div>
+  <script src="./js/index.js"></script>
+</body>
+</html>
